@@ -4,7 +4,9 @@ Easily add web based remote syslog capabilities to your ESP32/ESP8266 projects.
 
 ## Installation
 
-Clone this repo to your Arduino libraries directory. On Linux this is `~/Arduino/libraries/`
+Clone this repo to your Arduino libraries directory. On Linux this is `~/Arduino/libraries/`.
+Alternately you can just drop `SimpleSyslog.h` in the same directory as your `.ino`
+script.
 
 ## Usage
 
@@ -23,10 +25,10 @@ Send a syslog message:
 syslog.printf(FAC_LOCAL7, PRI_INFO, "This is a simple LOCAL7.INFO syslog packet");
 
 // Advanced printf() syntax supported also
-syslog.printf(FAC_USER, PRI_DEBUG, "Uptime: ", millis());
+syslog.printf(FAC_USER, PRI_DEBUG, "Uptime: %s", millis());
 ```
 
-Valid facilities: 
+Valid facilities:
 * `FAC_USER`
 * `FAC_LOCAL0`
 * `FAC_LOCAL1`
@@ -36,8 +38,8 @@ Valid facilities:
 * `FAC_LOCAL5`
 * `FAC_LOCAL6`
 * `FAC_LOCAL7`
-  
-Valid severities: 
+
+Valid severities:
 * `PRI_EMERGENCY`
 * `PRI_ALERT`
 * `PRI_CRITICAL`
@@ -49,4 +51,4 @@ Valid severities:
 
 ## Based on
 
-Borrowed from [jerryr/EspSyslog ](https://github.com/jerryr/EspSyslog) and improved upon.
+Borrowed from [jerryr/EspSyslog](https://github.com/jerryr/EspSyslog) and improved upon.
