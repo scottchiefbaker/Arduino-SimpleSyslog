@@ -20,7 +20,7 @@ SimpleSyslog syslog("YourHostname", "YourAppName", "192.168.5.222");
 
 Send a syslog message:
 
-```
+```C++
 // Simple string syntax
 syslog.printf(FAC_LOCAL7, PRI_INFO, "This is a simple LOCAL7.INFO syslog packet");
 
