@@ -39,12 +39,12 @@ class SimpleSyslog {
 	WiFiUDP SimpleSyslog_udp;
 
 	public:
-		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port=514):
-			_hostname(hostname),
-			_app(app),
-			_server(server),
-			_port(port)
-	{}
+		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port = 514) {
+			this->_hostname = hostname;
+			this->_app      = app;
+			this->_server   = server;
+			this->_port     = port;
+		}
 
 		void printf(uint8_t facility, uint8_t severity, char* format, ...) {
 			// The PRI value is an integer number which calculates by the following metric:
@@ -71,6 +71,6 @@ class SimpleSyslog {
 		const char* _hostname;
 		const char* _app;
 		const char* _server;
-		const int _port;
+		uint16_t _port;
 };
 #endif
