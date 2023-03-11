@@ -49,6 +49,28 @@ Valid severities:
 * `PRI_INFO`
 * `PRI_DEBUG`
 
+## Configuring `rsyslog` to receive messages
+
+You will need to configure your `/etc/rsyslog.conf` to accept incoming UDP syslog
+messages. Add these lines to your config and restart `rsyslog`
+
+```
+$ModLoad imudp
+$UDPServerRun 514
+```
+
+You may want to configure a specific rule to handle your messages:
+
+```
+# /etc/rsyslog.d/arduino.conf
+template(name="arduino" type="string" string="/var/log/arduino.log")
+
+if ($syslogfacility-text == "local7" or $syslogfacility-text == "user") then {
+    action(type="omfile" DynaFile="arduino" FileCreateMode="0644")
+    stop
+}
+```
+
 ## Based on
 
 Borrowed from [jerryr/EspSyslog](https://github.com/jerryr/EspSyslog) and improved upon.
