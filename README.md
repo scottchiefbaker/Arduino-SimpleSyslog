@@ -10,12 +10,12 @@ script.
 
 ## Usage
 
-Include the Simple syslog library and create a global `syslog` object with your environment settings:
+Include the SimpleSyslog library and create a global `syslog` object with your environment settings:
 
 ```C++
 #include <SimpleSyslog.h>
 
-SimpleSyslog syslog("YourHostname", "YourAppName", "192.168.5.222");
+SimpleSyslog syslog("ArduinoHostname", "ArduinoApp", "192.168.5.222");
 ```
 
 Send a syslog message:
