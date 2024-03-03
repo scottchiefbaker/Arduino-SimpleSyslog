@@ -1,6 +1,6 @@
 # Arduino SimpleSyslog
 
-Easily add web based remote syslog capabilities to your ESP32/ESP8266 projects.
+Easily add web remote syslog capabilities to your ESP32/ESP8266 projects.
 
 ## Installation
 
