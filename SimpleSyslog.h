@@ -16,7 +16,7 @@
 #include <Arduino.h>
 #include <WiFiUdp.h>
 
-#define MAX_PACKET_SIZE 256
+#define OVERHEAD_PACKET_SIZE 128
 
 #define PRI_EMERGENCY 0
 #define PRI_ALERT     1
@@ -41,11 +41,13 @@ class SimpleSyslog {
 	WiFiUDP SimpleSyslog_udp;
 
 	public:
-		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port = 514) {
-			this->_hostname = hostname;
-			this->_app      = app;
-			this->_server   = server;
-			this->_port     = port;
+		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port = 514,  uint16_t max_buffer_size = 256) {
+			this->_hostname 		= hostname;
+			this->_app      		= app;
+			this->_server   		= server;
+			this->_port     		= port;
+			this->_max_buffer_size	= max_buffer_size;
+
 		}
 
 		void printf(uint8_t facility, uint8_t severity, char* format, ...) {
@@ -55,13 +57,13 @@ class SimpleSyslog {
 			// Get the variadic params from this function
 			va_list args;
 			va_start(args, format);
-			char buf[128];
-			vsnprintf(buf, 128, format, args);
+			char buf[_max_buffer_size];
+			vsnprintf(buf, _max_buffer_size, format, args);
 			va_end(args);
 
 			// This is a unit8 instead of a char because that's what udp.write() wants
-			uint8_t buffer[MAX_PACKET_SIZE];
-			int len = snprintf((char*)buffer, MAX_PACKET_SIZE, "<%d>%s %s: %s", priority, _hostname, _app, buf);
+			uint8_t buffer[_max_buffer_size+OVERHEAD_PACKET_SIZE];
+			int len = snprintf((char*)buffer, _max_buffer_size+OVERHEAD_PACKET_SIZE, "<%d>%s %s: %s", priority, _hostname, _app, buf);
 
 			// Send the raw UDP packet
 			SimpleSyslog_udp.beginPacket(_server, _port);
@@ -74,5 +76,7 @@ class SimpleSyslog {
 		const char* _app;
 		const char* _server;
 		uint16_t _port;
+		uint16_t _max_buffer_size;
+
 };
 #endif
