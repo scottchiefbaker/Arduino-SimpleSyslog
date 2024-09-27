@@ -61,7 +61,7 @@ class SimpleSyslog {
 			va_end(args);
 
 			// This is a unit8 instead of a char because that's what udp.write() wants
-			uint8_t buffer[_max_packet_size+OVERHEAD_PACKET_SIZE];
+			uint8_t buffer[_max_packet_size];
 			int len = snprintf((char*)buffer, _max_packet_size, "<%d>%s %s: %s", priority, _hostname, _app, buf);
 
 			// Send the raw UDP packet
