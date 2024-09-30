@@ -1,7 +1,7 @@
 #ifndef SIMPLE_SYSLOG_H
 #define SIMPLE_SYSLOG_H
 
-#define SIMPLE_SYSLOG_VERSION "0.1.1"
+#define SIMPLE_SYSLOG_VERSION "0.1.2"
 
 #if defined(ESP8266)
 	#include <ESP8266WiFi.h>
