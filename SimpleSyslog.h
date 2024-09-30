@@ -45,7 +45,7 @@ class SimpleSyslog {
 			this->_app      		= app;
 			this->_server   		= server;
 			this->_port     		= port;
-			this->_max_packet_size	= max_packet_size;
+			this->_max_packet_size   	= max_packet_size;
 
 		}
 
