@@ -17,9 +17,9 @@ Include the SimpleSyslog library and create a global `syslog` object with your e
 
 SimpleSyslog syslog("ArduinoHostname", "ArduinoApp", "192.168.5.222");
 ```
-Optional settings are port (default : 514) and maximum packet size (default : 256). To use port 5140 with a packet size of 400 :
+Optional settings are port (default: 514) and maximum packet size (default: 128). To use port 5140 with a packet size of 400:
 ```
-SimpleSyslog syslog("ArduinoHostname", "ArduinoApp", "192.168.5.222",5140,400);
+SimpleSyslog syslog("ArduinoHostname", "ArduinoApp", "192.168.5.222", 5140, 400);
 ```
 
 

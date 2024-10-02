@@ -40,13 +40,12 @@ class SimpleSyslog {
 	WiFiUDP SimpleSyslog_udp;
 
 	public:
-		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port = 514,  uint16_t max_packet_size = 256) {
-			this->_hostname 		= hostname;
-			this->_app      		= app;
-			this->_server   		= server;
-			this->_port     		= port;
-			this->_max_packet_size   	= max_packet_size;
-
+		SimpleSyslog(const char* hostname, const char* app, const char* server, uint16_t port = 514, uint16_t max_packet_size = 128) {
+			this->_hostname        = hostname;
+			this->_app             = app;
+			this->_server          = server;
+			this->_port            = port;
+			this->_max_packet_size = max_packet_size;
 		}
 
 		void printf(uint8_t facility, uint8_t severity, char* format, ...) {
