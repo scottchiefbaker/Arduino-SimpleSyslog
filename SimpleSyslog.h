@@ -48,7 +48,7 @@ class SimpleSyslog {
 			this->_max_packet_size = max_packet_size;
 		}
 
-		void printf(uint8_t facility, uint8_t severity, char* format, ...) {
+		void printf(uint8_t facility, uint8_t severity, const char* format, ...) {
 			// The PRI value is an integer number which calculates by the following metric:
 			uint8_t priority = (8 * facility) + severity;
 
