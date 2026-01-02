@@ -1,14 +1,14 @@
-# Arduino SimpleSyslog
+# 📒 Arduino SimpleSyslog
 
 Easily add remote syslog capabilities to your ESP32/ESP8266 projects.
 
-## Installation
+## 📦 Installation
 
 Clone this repo to your Arduino libraries directory. On Linux this is `~/Arduino/libraries/`.
 Alternately you can just drop `SimpleSyslog.h` in the same directory as your `.ino`
 script.
 
-## Usage
+## ✨ Usage
 
 Include the SimpleSyslog library and create a global `syslog` object with your environment settings:
 
@@ -21,7 +21,6 @@ Optional settings are port (default: 514) and maximum packet size (default: 128)
 ```
 SimpleSyslog syslog("ArduinoHostname", "ArduinoApp", "192.168.5.222", 5140, 400);
 ```
-
 
 Send a syslog message:
 
@@ -54,7 +53,7 @@ Valid severities:
 * `PRI_INFO`
 * `PRI_DEBUG`
 
-## Configuring `rsyslog` to receive messages
+## ⚙️ Configuring `rsyslog` to receive messages
 
 You will need to configure your `/etc/rsyslog.conf` to accept incoming UDP syslog
 messages. Add these lines to your config and restart `rsyslog`
@@ -76,6 +75,8 @@ if ($syslogfacility-text == "local7" or $syslogfacility-text == "user") then {
 }
 ```
 
-## Based on
+## 🕵️ See also
 
-Borrowed from [jerryr/EspSyslog](https://github.com/jerryr/EspSyslog) and improved upon.
+* [Arduino-SimpleSyslog](https://github.com/scottchiefbaker/Arduino-SimpleSyslog)
+* [JoaoLopesF/RemoteDebug](https://github.com/JoaoLopesF/RemoteDebug) (not maintained)
+* [jerryr/EspSyslog](https://github.com/jerryr/EspSyslog) (not maintained)
